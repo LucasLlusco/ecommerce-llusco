@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { Cantidad } from './styled';
 
 const ItemCount = ({stock, initial, onAdd}) => {
-    const [contador, setContador] = useState(initial); 
+    const [contador, setContador] = useState(initial);
 
-    const restar = () => {
+    const restar = () => { 
         if(contador <= initial) {
             console.log("te pasaste por debajo del minimo")
             return;
