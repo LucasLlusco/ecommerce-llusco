@@ -6,6 +6,7 @@ import {Header, Nav, ContainerSearch, SessionCarrito} from './styled'
 
 
 const NavBar = () => {
+  
   return (
       <>
         <Header>
@@ -28,3 +29,5 @@ const NavBar = () => {
 }
 
 export default NavBar;
+
+

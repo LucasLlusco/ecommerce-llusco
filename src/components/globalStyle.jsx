@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         box-sizing: inherit;
     }
+
     a {
         text-decoration: none;
         color: initial;

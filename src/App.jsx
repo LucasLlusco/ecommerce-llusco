@@ -1,7 +1,8 @@
 import './App.css';
+import { GlobalStyle } from './components/globalStyle';
 import NavBar from './components/NavBar/index';
 import ItemListContainer from './components/ItemListContainer';
-import { GlobalStyle } from './components/globalStyle';
+import ItemDetailContainer from './components/ItemDetailContainer'
 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <GlobalStyle/>
       <NavBar/>
       <ItemListContainer greeting="todos los productos" />
+      <ItemDetailContainer />
     </>
     
     

@@ -1,14 +1,19 @@
 import React from 'react'
-import {ProductCard} from './styled'
+import {ProductCard, ProductImg, ProductDescription} from './styled'
 
 
 
 const Item = ({item}) => { 
   return (                 
     <ProductCard>
-        <p>{item.name}</p>
-        <p>{item.price}</p>
-        <button>Ver mas</button>
+        <ProductImg>
+          <img src={item.image} alt={item.title} />
+        </ProductImg>
+        <ProductDescription>
+          <p>{item.title}</p>
+          <p>{item.price}</p>
+          <button>Ver mas</button>
+        </ProductDescription>
     </ProductCard>
   )
 }

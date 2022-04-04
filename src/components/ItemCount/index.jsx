@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import { Cantidad } from './styled';
 
-const ItemCount = ({stock, initial, onAdd}) => {
-    const [contador, setContador] = useState(initial);
+const ItemCount = ({stock, initial, onAdd}) => { 
+    const [contador, setContador] = useState(initial); 
 
     const restar = () => { 
         if(contador <= initial) {
             console.log("te pasaste por debajo del minimo")
             return;
         } else {
-            setContador(contador - 1); 
+            setContador(contador - 1);
         }
     }
 
@@ -21,6 +21,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
             setContador(contador + 1);   
         }
     }
+
 
     const comprarItem = () => {
         onAdd(contador)
