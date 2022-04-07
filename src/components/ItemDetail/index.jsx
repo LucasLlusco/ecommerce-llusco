@@ -6,8 +6,6 @@ import {ItemDetailContainer, DetailImages, DetailInfo} from './styled'
 
 
 const ItemDetail = ({item}) => {
-
-
   const onAdd = (contador) => {
     console.log(`acabas de comprar ${contador} productos!`)
   }
@@ -22,6 +20,7 @@ const ItemDetail = ({item}) => {
       </DetailImages>
       <DetailInfo>
         <h2>{item.title}</h2>
+        <p>{item.price}</p>
         <p>{item.description} </p>
         <p>category: {item.category}</p>
         <p>rating: {item.rating.rate}</p>

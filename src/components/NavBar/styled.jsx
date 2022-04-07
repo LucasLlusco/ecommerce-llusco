@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Header = styled.header`
     padding: 20px 0px;
 `
-export const Nav = styled.nav`
+export const HeaderTop = styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -44,5 +44,20 @@ export const SessionCarrito = styled.div `
         display: flex;
         align-items: center;
         gap: 5px;
+    }
+`;
+
+export const HeaderBottom = styled.div `
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    div {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        a.active {
+            color: red;
+
+        }
     }
 `;

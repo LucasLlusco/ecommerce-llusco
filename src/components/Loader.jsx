@@ -28,7 +28,7 @@ const Spinner = styled.div`
         height: 18px;
         border-radius: 20%;
         background: #fff;
-        background-color: green;
+        background-color: red;
     }
     div:nth-child(1) {
         transform: rotate(0deg);

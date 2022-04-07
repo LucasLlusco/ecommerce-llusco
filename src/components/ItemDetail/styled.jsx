@@ -9,6 +9,9 @@ export const ItemDetailContainer = styled.div`
 `
 export const DetailImages = styled.div`
     padding: 50px;
+    @media screen and (max-width: 576px) {
+        padding: 0;   
+    }
     div {
         width: 100%;
         min-height: 450px;
@@ -25,4 +28,7 @@ export const DetailInfo = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
+    @media screen and (max-width: 576px) {
+        padding: 0;
+    }
 `

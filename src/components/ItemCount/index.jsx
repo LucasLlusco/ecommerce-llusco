@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Cantidad } from './styled';
+import AddIcon from '@mui/icons-material/Add';
+import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 
 const ItemCount = ({stock, initial, onAdd}) => { 
     const [contador, setContador] = useState(initial); 
@@ -9,7 +11,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
             console.log("te pasaste por debajo del minimo")
             return;
         } else {
-            setContador(contador - 1);
+            setContador(contador - 1); 
         }
     }
 
@@ -22,7 +24,6 @@ const ItemCount = ({stock, initial, onAdd}) => {
         }
     }
 
-
     const comprarItem = () => {
         onAdd(contador)
     }
@@ -30,9 +31,9 @@ const ItemCount = ({stock, initial, onAdd}) => {
     return (
         <>
         <Cantidad>
-            <button onClick={restar}>-</button>
+            <button onClick={restar}><HorizontalRuleIcon/></button>
             <input type="text" readOnly value={contador} />
-            <button onClick={aumentar}>+</button>
+            <button onClick={aumentar}><AddIcon/></button>
         </Cantidad>
         <button onClick={comprarItem}>Comprar</button>
         </>
