@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import {ProductCard, ProductImg, ProductDescription} from './styled'
 
 
-const Item = ({item}) => {
+const Item = ({item}) => { 
   const URL = `/product/${item.id}`; 
   return (              
     <ProductCard>

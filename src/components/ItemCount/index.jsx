@@ -4,38 +4,39 @@ import AddIcon from '@mui/icons-material/Add';
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 
 const ItemCount = ({stock, initial, onAdd}) => { 
-    const [contador, setContador] = useState(initial); 
+    const [quantityToAdd, setQuantityToAdd] = useState(initial); 
 
     const restar = () => { 
-        if(contador <= initial) {
+        if(quantityToAdd <= initial) {
             console.log("te pasaste por debajo del minimo")
             return;
         } else {
-            setContador(contador - 1); 
+            setQuantityToAdd(quantityToAdd - 1);
         }
     }
 
     const aumentar = () => { 
-        if(contador >= stock) {
+        if(quantityToAdd >= stock) {
             console.log("te pasaste del stock")
             return;
         } else {
-            setContador(contador + 1);   
+            setQuantityToAdd(quantityToAdd + 1);   
         }
     }
 
+    
     const comprarItem = () => {
-        onAdd(contador)
+        onAdd(quantityToAdd)
     }
     
     return (
         <>
         <Cantidad>
             <button onClick={restar}><HorizontalRuleIcon/></button>
-            <input type="text" readOnly value={contador} />
+            <input type="text" readOnly value={quantityToAdd} />
             <button onClick={aumentar}><AddIcon/></button>
         </Cantidad>
-        <button onClick={comprarItem}>Comprar</button>
+        <button onClick={comprarItem}>Agregar al carrito</button>
         </>
     )
 }

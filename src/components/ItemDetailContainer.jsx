@@ -13,10 +13,12 @@ const ItemDetailContainer = () => {
 
   const params = useParams(); 
   const productName = params.id;  
+  console.log(productName)
 
   useEffect(() => {
     const URL = productName? `https://fakestoreapi.com/products/${productName}`
     : "https://fakestoreapi.com/products/1";
+    console.log(URL)
     const getProduct = async () => {
       setLoading(true)
       try {
@@ -49,4 +51,5 @@ const ItemDetailContainer = () => {
 }
 
 export default ItemDetailContainer
+
 

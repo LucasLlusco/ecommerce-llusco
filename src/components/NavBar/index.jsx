@@ -19,7 +19,7 @@ const NavBar = () => {
   return (
       <>
         <Header>
-            <HeaderTop className="container"> 
+            <HeaderTop className="container header-top"> 
                 <div><Link to="/"><h1>Logo</h1></Link></div>
                 <ContainerSearch>
                   <input type="text" placeholder='Buscar...' />    
@@ -50,7 +50,4 @@ const NavBar = () => {
 }
 
 export default NavBar;
-
-
-
 

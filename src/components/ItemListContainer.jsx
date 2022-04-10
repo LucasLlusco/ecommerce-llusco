@@ -8,8 +8,9 @@ const ItemListContainer = ({greeting}) => {
 
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(false) 
+  const [error, setError] = useState(false)
   
+  //console.log(useParams());
   const params = useParams();
   const categoryName = params.id;
 
@@ -24,11 +25,13 @@ const ItemListContainer = ({greeting}) => {
         const res = await fetch(URL);
         const data = await res.json(); 
         setProductos(data) 
-      } catch (error) {   
-        setError(true)    
+      } catch (error) {  
+        setError(true)   
+        
       } finally {
         setLoading(false) 
       }                   
+
   }
     getProducts() 
 
@@ -45,7 +48,7 @@ const ItemListContainer = ({greeting}) => {
         <p>Lo sentimos hubo un error</p> 
       ) : (  
         <>
-        <h1>{greeting}{categoryName}</h1>
+         <h1>{greeting}{categoryName}</h1>
         <ItemList items={productos}/>
         </> 
       )
