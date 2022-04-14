@@ -11,9 +11,8 @@ const ItemDetailContainer = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  const params = useParams(); 
+  const params = useParams();
   const productName = params.id;  
-  console.log(productName)
 
   useEffect(() => {
     const URL = productName? `https://fakestoreapi.com/products/${productName}`
