@@ -43,6 +43,7 @@ const ItemDetail = ({item}) => {
           <button onClick={deleteProduct}>Borrar este producto del carrito</button>
           <button onClick={deleteAll}>Vaciar el carrito entero.</button>
           </>
+                                                                 
           
         )}
       </DetailInfo>

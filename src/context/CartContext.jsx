@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 
 export const context = createContext();
-const { Provider } = context; 
+const { Provider } = context;
 console.log(context);
 
 const CustomProvider = ({children}) => {
@@ -13,9 +13,9 @@ const CustomProvider = ({children}) => {
         quantity
       };
       if(isInCart(item)) {
-        const productFind = cartItems.find(item => item.id === newItem.id); 
+        const productFind = cartItems.find(item => item.id === newItem.id);
         const indexProduct = cartItems.indexOf(productFind);
-        const newCartItems = [...cartItems]; 
+        const newCartItems = [...cartItems];
         newCartItems[indexProduct].quantity += quantity;
         setCartItems(newCartItems);
       } else { 
@@ -25,6 +25,7 @@ const CustomProvider = ({children}) => {
     } 
     const removeItem = (item) => {
       const productRemove = cartItems.filter(product => product.id !== item.id)
+
       setCartItems(productRemove) 
     }
     const clear = () => {
@@ -38,8 +39,11 @@ const CustomProvider = ({children}) => {
         return false
       }
     } 
+
+
+
   return (
-    <Provider value={{cartItems, addItem, removeItem, clear }}>{children}</Provider> 
+    <Provider value={{cartItems, addItem, removeItem, clear }}>{children}</Provider>
   ) 
 }
 

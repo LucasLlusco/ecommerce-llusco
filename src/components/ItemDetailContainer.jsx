@@ -11,27 +11,27 @@ const ItemDetailContainer = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  const params = useParams();
-  const productName = params.id;  
-
+  const params = useParams(); 
+  const productId = params.id; 
   useEffect(() => {
-    const URL = productName? `https://fakestoreapi.com/products/${productName}`
+    const URL = productId? `https://fakestoreapi.com/products/${productId}`
     : "https://fakestoreapi.com/products/1";
     console.log(URL)
-    const getProduct = async () => {
-      setLoading(true)
-      try {
-        const res = await fetch(URL);
-        const data = await res.json();
-        setProducto(data) 
-      } catch (error) {                        
+    fetch(URL)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setProducto(data)
+      })
+      .catch ((err) => {
+        console.error(err);
         setError(true)
-      } finally {
+      })            
+      .finally(() => {
         setLoading(false)
-      }
-    }
-    getProduct() 
-  }, [productName]); 
+      })         
+  }, [productId]); 
   return (
     <>
     {loading ? (

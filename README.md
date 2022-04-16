@@ -1,3 +1,17 @@
+# Introduccion 
+Este proyecto es un ecommerce de react js para el curso
+de React JS de CoderHouse, se tratara de un ecommerce
+que vende celulares, aunque de momento decidi usar 
+fakestoreapi para traer productos y no estar creandolos a mano.
+
+# Dependencias extra 
+styled-components: Decidi utilizar esta libreria porque me parece una 
+gran opcion para darle estilos a la app de forma mas facil, rapida y ordenada.
+
+material ui icons: Decidi utilizar solo material ui icons y no la libreria completa
+porque quiero darle mis propios estilos a la app.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -14,6 +14,7 @@ const ItemListContainer = ({greeting}) => {
   const categoryName = params.id;
 
   useEffect(() => {
+    
     const URL = categoryName? `https://fakestoreapi.com/products/category/${categoryName}`
     : "https://fakestoreapi.com/products?limit=5";
 
@@ -21,16 +22,17 @@ const ItemListContainer = ({greeting}) => {
       setLoading(true) 
       try {
         const res = await fetch(URL);
-        const data = await res.json(); 
+        const data = await res.json();
         setProductos(data) 
       } catch (error) {   
         setError(true)   
+
       } finally {
         setLoading(false) 
       }                   
-
+      
   }
-    getProducts() 
+    getProducts()
 
   }, [categoryName]);
   
