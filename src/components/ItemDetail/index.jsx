@@ -9,18 +9,15 @@ import { context } from '../../context/CartContext'
 const ItemDetail = ({item}) => {
 
   const [addToCart, setAddToCart] = useState(true)
-  const {addItem, removeItem, clear} = useContext(context)
+  const {addItem, removeItem} = useContext(context)
   const onAdd = (quantityToAdd) => {
     console.log(`acabas de agregar ${quantityToAdd} productos!`)
     addItem(item, quantityToAdd)
     setAddToCart(false)
   }
-  const deleteProduct = () => {
+  /*const deleteProduct = () => {
     removeItem(item)
-  }
-  const deleteAll = () => {
-    clear()
-  }
+  }*/
   return (
     <ItemDetailContainer className='container'>
       <DetailImages>
@@ -40,10 +37,8 @@ const ItemDetail = ({item}) => {
         ) : (
           <>
           <button><Link to="/cart">Terminar compra</Link></button>
-          <button onClick={deleteProduct}>Borrar este producto del carrito</button>
-          <button onClick={deleteAll}>Vaciar el carrito entero.</button>
+          {/* <button onClick={deleteProduct}>Borrar este producto del carrito</button> */}
           </>
-                                                                 
           
         )}
       </DetailInfo>

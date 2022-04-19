@@ -28,7 +28,7 @@ const NavBar = () => {
                   </span>   
                 </ContainerSearch>
                 <SessionCarrito>
-                  <li><a href="#"><CartWidget/><span>Mi carrito</span></a></li>     
+                  <li><Link to={"/cart"}><CartWidget/><span>Mi carrito</span></Link></li>     
                   <li><a href="#"><AccountCircleIcon/><span>Mi cuenta</span></a></li>  
                 </SessionCarrito>                         
             </HeaderTop>
@@ -50,5 +50,3 @@ const NavBar = () => {
 }
 
 export default NavBar;
-
-

@@ -5,7 +5,7 @@ import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Cart from './components/Cart';
-import CustomProvider from './context/CartContext'; 
+import CustomProvider from './context/CartContext';
 
 
 function App() {
@@ -23,10 +23,9 @@ function App() {
         </Routes>
       </CustomProvider>
     </BrowserRouter>
-    </>
-    
-    
+    </>    
   );
 }
 
 export default App;
+

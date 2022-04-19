@@ -4,7 +4,7 @@ import AddIcon from '@mui/icons-material/Add';
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 
 const ItemCount = ({stock, initial, onAdd}) => { 
-    const [quantityToAdd, setQuantityToAdd] = useState(initial); 
+    const [quantityToAdd, setQuantityToAdd] = useState(initial);
 
     const restar = () => { 
         if(quantityToAdd <= initial) {
@@ -23,7 +23,6 @@ const ItemCount = ({stock, initial, onAdd}) => {
             setQuantityToAdd(quantityToAdd + 1);     
         }
     }
-
 
     const comprarItem = () => {
         onAdd(quantityToAdd)
