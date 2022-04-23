@@ -23,16 +23,15 @@ const CartNotification = styled.div`
 `
 
 const CartWidget = () => {
-  const {cartItems, cartItemsQuantity, getCartItemsQuantity} = useContext(context)
+  const {cartItems, cartItemsQuantity, getCartItemsQuantity} = useContext(context) 
   useEffect(() => {
-    getCartItemsQuantity()
+    getCartItemsQuantity()   
 
-  }, [cartItems])
-  
+  }, [cartItems]) 
 
   console.log(`productos quantity en el carrito ${cartItemsQuantity}`)
 
-  return (
+  return ( 
     <CartNotification>
         <ShoppingCartIcon/>
         {cartItemsQuantity == 0? (<></>) : (<span>{cartItemsQuantity}</span>)}
@@ -41,3 +40,5 @@ const CartWidget = () => {
 }
 
 export default CartWidget
+
+

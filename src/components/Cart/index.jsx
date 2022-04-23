@@ -14,27 +14,25 @@ import { CartContainer,
 
 const Cart = () => {
   const {cartItems, clear, removeItem} = useContext(context)
-  const [total, setTotal] = useState(0)
-
-  const deleteProduct = () => {
-    //removeItem(product) 
-  }
+  const [total, setTotal] = useState(0) 
   const deleteAll = () => {
     console.log("se acaba de vaciar todo el cart");
     clear()
   }
 
   const calculateTotal = () => {
-    let totalCounter = 0; 
-    cartItems.forEach((product) => {
+    let totalCounter = 0;  
+    cartItems.forEach((product) => {  
       totalCounter += product.price * product.quantity; 
     })
     setTotal(totalCounter)
   }
 
   useEffect(() => { 
-    calculateTotal() 
+    calculateTotal()  
   }, [cartItems])
+  
+
   
   return (
     <CartContainer className='container'>
@@ -50,7 +48,7 @@ const Cart = () => {
             </CartImg>
             <CartName>
               <p>{product.title}</p>
-              <button onClick={deleteProduct}>eliminar producto</button>
+              <button onClick={ () => {removeItem(product)}}>eliminar producto</button>
             </CartName>
             <CartQuantity>{product.quantity}</CartQuantity>
             <CartPrice>p.unit ${product.price}</CartPrice>

@@ -37,7 +37,6 @@ const ItemDetail = ({item}) => {
         ) : (
           <>
           <button><Link to="/cart">Terminar compra</Link></button>
-          {/* <button onClick={deleteProduct}>Borrar este producto del carrito</button> */}
           </>
           
         )}

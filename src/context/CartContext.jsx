@@ -10,33 +10,33 @@ const CustomProvider = ({children}) => {
   const [cartItemsQuantity, setCartItemsQuantity] = useState(0)
 
   const addItem = (item, quantity) => {
-    const newItem = {
+    const newItem = { 
       ...item,
       quantity
     };
-    if(isInCart(item)) {
+    if(isInCart(item)) { 
       const productFind = cartItems.find(item => item.id === newItem.id); 
       const indexProduct = cartItems.indexOf(productFind);
       const newCartItems = [...cartItems]; 
-      newCartItems[indexProduct].quantity += quantity;
+      newCartItems[indexProduct].quantity += quantity; 
 
-      setCartItems(newCartItems);
+      setCartItems(newCartItems); 
     } else {
-      setCartItems([...cartItems, newItem]);
+      setCartItems([...cartItems, newItem]); 
     }
     console.log(cartItems);
   } 
   const removeItem = (item) => {
-    const productRemove = cartItems.filter(product => product.id !== item.id)
-    setCartItems(productRemove) 
+    const productRemove = cartItems.filter(product => product.id !== item.id) 
+    setCartItems(productRemove)    
   }
   const clear = () => {
     setCartItems([])
     getCartItemsQuantity() 
   } 
   const isInCart = (item) => { 
-    if (cartItems.find(product => product.id === item.id)) {
-      return true;
+    if (cartItems.find(product => product.id === item.id)) { 
+      return true;  
     } else {
       return false
     }
@@ -44,12 +44,12 @@ const CustomProvider = ({children}) => {
 
   const getCartItemsQuantity = () => {
     let qty = 0;
-    if (cartItems.length === 0) { 
-      setCartItemsQuantity(qty)
+    if (cartItems.length === 0) {  
+      setCartItemsQuantity(qty)  
     } else { 
       cartItems.forEach((product) => {
         qty += product.quantity
-        setCartItemsQuantity(qty)
+        setCartItemsQuantity(qty)  
       })
     }
   }
