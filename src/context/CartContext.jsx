@@ -27,7 +27,7 @@ const CustomProvider = ({children}) => {
     console.log(cartItems);
   } 
   const removeItem = (item) => {
-    const productRemove = cartItems.filter(product => product.id !== item.id) 
+    const productRemove = cartItems.filter(product => product.id !== item.id)
     setCartItems(productRemove)    
   }
   const clear = () => {
@@ -47,7 +47,7 @@ const CustomProvider = ({children}) => {
     if (cartItems.length === 0) {  
       setCartItemsQuantity(qty)  
     } else { 
-      cartItems.forEach((product) => {
+      cartItems.forEach((product) => { 
         qty += product.quantity
         setCartItemsQuantity(qty)  
       })

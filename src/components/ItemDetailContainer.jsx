@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail';
 import Loader from './Loader';
 
-
+import { db } from '../firebase/firebase';
+import { doc, getDoc, collection } from "firebase/firestore";
 
 
 const ItemDetailContainer = () => {
@@ -15,24 +16,26 @@ const ItemDetailContainer = () => {
   const productId = params.id; 
 
   useEffect(() => {
-    const URL = productId? `https://fakestoreapi.com/products/${productId}`
-    : "https://fakestoreapi.com/products/1";
-    console.log(URL)
-    fetch(URL)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setProducto(data)
-      })
-      .catch ((err) => {
-        console.error(err);
-        setError(true)
-      })            
-      .finally(() => {
-        setLoading(false)
-      })         
-  }, [productId]); 
+    const productsCollection = collection(db, "Productos");
+    const refDoc = doc(productsCollection, productId) 
+    getDoc(refDoc) 
+    .then((result)=>{ 
+      const id = result.id; 
+      const product = { 
+        id,             
+        ...result.data()
+      };
+      setProducto(product);
+
+    })
+    .catch (error => {
+      console.log(error)
+      setError(true)         
+    }) 
+    .finally(() => {
+      setLoading(false)       
+    })
+  }, [productId]);
   return (
     <>
     {loading ? (

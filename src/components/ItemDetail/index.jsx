@@ -9,15 +9,13 @@ import { context } from '../../context/CartContext'
 const ItemDetail = ({item}) => {
 
   const [addToCart, setAddToCart] = useState(true)
-  const {addItem, removeItem} = useContext(context)
+  const {addItem} = useContext(context)
   const onAdd = (quantityToAdd) => {
     console.log(`acabas de agregar ${quantityToAdd} productos!`)
     addItem(item, quantityToAdd)
     setAddToCart(false)
   }
-  /*const deleteProduct = () => {
-    removeItem(item)
-  }*/
+
   return (
     <ItemDetailContainer className='container'>
       <DetailImages>
@@ -27,11 +25,11 @@ const ItemDetail = ({item}) => {
 
       </DetailImages>
       <DetailInfo>
-        <h2>{item.title}</h2>
+        <h2>{item.name}</h2>
         <p>{item.price}</p>
-        <p>{item.description} </p>
-        <p>category: {item.category}</p>
-        <p>rating: {item.rating.rate}</p>
+        {/* <p>{item.description} </p> */}
+        <p>brand: {item.brand}</p>
+        {/* <p>rating: {item.rating.rate}</p> */}
         {addToCart ? (
           <ItemCount stock={5} initial={1} onAdd={onAdd}/>           
         ) : (

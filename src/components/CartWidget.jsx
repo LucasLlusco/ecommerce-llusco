@@ -23,8 +23,8 @@ const CartNotification = styled.div`
 `
 
 const CartWidget = () => {
-  const {cartItems, cartItemsQuantity, getCartItemsQuantity} = useContext(context) 
-  useEffect(() => {
+  const {cartItems, cartItemsQuantity, getCartItemsQuantity} = useContext(context)
+  useEffect(() => { 
     getCartItemsQuantity()   
 
   }, [cartItems]) 

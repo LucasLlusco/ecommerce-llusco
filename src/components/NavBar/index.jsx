@@ -11,10 +11,8 @@ import { Link, NavLink } from 'react-router-dom';
 
 const NavBar = () => {
   const categories = [
-    { name: "Electronics", route: "category/electronics", id: "electronics" },
-    { name: "Jewelery", route: "category/jewelery", id: "jewelery" },
-    { name: "Men's clothing", route: "category/men's clothing", id: "men's clothing" },
-    { name: "Women's clothing", route: "category/women's clothing", id: "women's clothing" }
+    { name: "Samsung", route: "brand/Samsung", id: "Samsung" },
+    { name: "Apple", route: "brand/Apple", id: "Apple" },
   ];
   return (
       <>
