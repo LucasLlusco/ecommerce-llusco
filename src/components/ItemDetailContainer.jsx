@@ -16,7 +16,7 @@ const ItemDetailContainer = () => {
   const productId = params.id; 
 
   useEffect(() => {
-    const productsCollection = collection(db, "Productos");
+    const productsCollection = collection(db, "Productos"); 
     const refDoc = doc(productsCollection, productId) 
     getDoc(refDoc) 
     .then((result)=>{ 
@@ -26,7 +26,8 @@ const ItemDetailContainer = () => {
         ...result.data()
       };
       setProducto(product);
-
+      console.log(id)
+      console.log(result.data())
     })
     .catch (error => {
       console.log(error)
@@ -55,4 +56,23 @@ const ItemDetailContainer = () => {
 
 export default ItemDetailContainer
 
+
+/*
+const URL = productId? `https://fakestoreapi.com/products/${productId}`
+    : "https://fakestoreapi.com/products/1";
+    console.log(URL)
+    fetch(URL)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setProducto(data)
+      })
+      .catch ((err) => {
+        console.error(err);
+        setError(true)
+      })            
+      .finally(() => {
+        setLoading(false)
+      })          */
 

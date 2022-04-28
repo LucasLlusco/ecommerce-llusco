@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { context } from '../../context/CartContext'
+import Form from '../Form'
 import { CartContainer, 
   CartList, 
   CartTotal, 
@@ -8,7 +9,8 @@ import { CartContainer,
   CartImg, 
   CartName, 
   CartQuantity, 
-  CartPrice 
+  CartPrice, 
+  CartForm
 } from './styled'
 
 
@@ -23,7 +25,7 @@ const Cart = () => {
 
   const calculateTotal = () => {
     let totalCounter = 0;  
-    cartItems.forEach((product) => {  
+    cartItems.forEach((product) => { 
       totalCounter += product.price * product.quantity; 
     })
     setTotal(totalCounter) 
@@ -57,12 +59,15 @@ const Cart = () => {
           </CartProduct>
         })}
       </CartList>
-      <CartTotal>
-        <h2>Resumen de pedido</h2>
-        <p>Total: <span>${total}</span></p>
-        <button>continuar</button>
-        <button onClick={deleteAll}>Vaciar carrito</button>
-      </CartTotal>
+      <CartForm>
+        <CartTotal>
+          <h2>Resumen de pedido</h2>
+          <p>Total: <span>${total}</span></p>
+          <button>continuar</button>
+          <button onClick={deleteAll}>Vaciar carrito</button>
+        </CartTotal>
+        <Form cartItems={cartItems} total={total}/>
+      </CartForm>
       </>
     )}
     </CartContainer>

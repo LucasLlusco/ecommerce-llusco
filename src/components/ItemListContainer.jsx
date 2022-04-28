@@ -5,6 +5,7 @@ import Loader from './Loader';
 import { db } from '../firebase/firebase'; 
 import { getDocs, collection, query, where  } from 'firebase/firestore'; 
 
+
 const ItemListContainer = ({greeting}) => {
 
   const [productos, setProductos] = useState([]);
@@ -17,14 +18,16 @@ const ItemListContainer = ({greeting}) => {
 
   useEffect(() => {
     setLoading(true) 
-
     const productsCollection = collection(db, "Productos"); 
-    const URL = brandName? query(productsCollection, where("brand", "==", brandName))
-    : collection(db, "Productos");
-    console.log(URL)
+    const consult = brandName ? 
+    query(productsCollection, where("brand", "==", brandName)) 
+    : productsCollection;
 
-    getDocs(URL) 
+    console.log(consult)
+
+    getDocs(consult) 
     .then((result => {
+      console.log(result) 
       const docs = result.docs  
       const list = docs.map((producto) => { 
         const id = producto.id 
@@ -70,6 +73,22 @@ const ItemListContainer = ({greeting}) => {
 
 export default ItemListContainer
 
+/*
+    //const URL = categoryName? `https://fakestoreapi.com/products/category/${categoryName}`
+    //: "https://fakestoreapi.com/products?limit=5";
 
+    const getProducts = async () => {
+      setLoading(true) 
+      try {
+        const res = await fetch(URL);
+        const data = await res.json(); 
+        setProductos(data) 
+      } catch (error) {  
+        setError(true)   
+      } finally {
+        setLoading(false) 
+      }                   
 
-
+  }
+    getProducts()  
+*/

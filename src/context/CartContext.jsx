@@ -10,7 +10,7 @@ const CustomProvider = ({children}) => {
   const [cartItemsQuantity, setCartItemsQuantity] = useState(0)
 
   const addItem = (item, quantity) => {
-    const newItem = { 
+    const newItem = {
       ...item,
       quantity
     };
@@ -19,10 +19,10 @@ const CustomProvider = ({children}) => {
       const indexProduct = cartItems.indexOf(productFind);
       const newCartItems = [...cartItems]; 
       newCartItems[indexProduct].quantity += quantity; 
-
+      
       setCartItems(newCartItems); 
     } else {
-      setCartItems([...cartItems, newItem]); 
+      setCartItems([...cartItems, newItem]);
     }
     console.log(cartItems);
   } 
@@ -47,14 +47,12 @@ const CustomProvider = ({children}) => {
     if (cartItems.length === 0) {  
       setCartItemsQuantity(qty)  
     } else { 
-      cartItems.forEach((product) => { 
+      cartItems.forEach((product) => {
         qty += product.quantity
         setCartItemsQuantity(qty)  
       })
     }
   }
-
-
 
   return (
     <Provider 

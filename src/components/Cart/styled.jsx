@@ -54,6 +54,7 @@ export const CartTotal = styled.div`
     gap: 10px;
     border: 1px solid #c4c4c4;
     //width: fit-content;
+    height: fit-content;
     max-width: 330px;
     h2 {
         font-size: 1rem;
@@ -66,3 +67,10 @@ export const CartTotal = styled.div`
     }
 
 `
+
+export const CartForm = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+`
+  
