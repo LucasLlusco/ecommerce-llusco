@@ -5,40 +5,46 @@ import Loader from './Loader';
 import { db } from '../firebase/firebase'; 
 import { getDocs, collection, query, where  } from 'firebase/firestore'; 
 
-
+import styled from "styled-components";
+const ItemsFound = styled.h2`
+  width: 90%;
+  margin: auto;
+  padding: 10px 0px;
+`
+export const ErrorMsg = styled.h2`
+  width: 90%;
+  margin: auto;
+  padding: 10px 0px;
+  text-align: center;
+`
 const ItemListContainer = ({greeting}) => {
 
-  const [productos, setProductos] = useState([]);
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false) 
   
   const params = useParams();
   const brandName = params.id;
-  console.log(brandName)
 
   useEffect(() => {
-    setLoading(true) 
+    setLoading(true);
     const productsCollection = collection(db, "Productos"); 
     const consult = brandName ? 
     query(productsCollection, where("brand", "==", brandName)) 
     : productsCollection;
 
-    console.log(consult)
-
     getDocs(consult) 
     .then((result => {
-      console.log(result) 
       const docs = result.docs  
-      const list = docs.map((producto) => { 
-        const id = producto.id 
+      const list = docs.map((element) => { 
+        const id = element.id;
         const product = {
           id,
-          ...producto.data()
+          ...element.data()
         }
         return product; 
       })
-      console.log(list)
-      setProductos(list)
+      setProducts(list)
     }))
     .catch (error => {
       console.log(error)
@@ -47,8 +53,6 @@ const ItemListContainer = ({greeting}) => {
     .finally(() => {
       setLoading(false)       
     })
-    
-   
   }, [brandName]);
   
   
@@ -59,12 +63,16 @@ const ItemListContainer = ({greeting}) => {
       <Loader />  
     ) : (
       error ? (  
-        <p>Lo sentimos hubo un error</p> 
+        <ErrorMsg>Lo sentimos hubo un error al cargar. Intente de nuevo</ErrorMsg> 
       ) : ( 
         <>
-         <h1>{greeting}{brandName}</h1>
-        <ItemList items={productos}/>
-        </> 
+        {greeting ? ( 
+          <ItemsFound>{greeting} ({products.length})</ItemsFound>
+        ) : (
+          <ItemsFound>Productos {brandName} encontrados ({products.length})</ItemsFound>          
+        )}
+        <ItemList items={products}/>
+        </>
       )
     )}
     </>
@@ -72,23 +80,3 @@ const ItemListContainer = ({greeting}) => {
 }
 
 export default ItemListContainer
-
-/*
-    //const URL = categoryName? `https://fakestoreapi.com/products/category/${categoryName}`
-    //: "https://fakestoreapi.com/products?limit=5";
-
-    const getProducts = async () => {
-      setLoading(true) 
-      try {
-        const res = await fetch(URL);
-        const data = await res.json(); 
-        setProductos(data) 
-      } catch (error) {  
-        setError(true)   
-      } finally {
-        setLoading(false) 
-      }                   
-
-  }
-    getProducts()  
-*/

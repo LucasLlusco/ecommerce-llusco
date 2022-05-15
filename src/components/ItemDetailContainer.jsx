@@ -2,32 +2,29 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail';
 import Loader from './Loader';
-
+import { ErrorMsg } from './ItemListContainer' 
 import { db } from '../firebase/firebase';
 import { doc, getDoc, collection } from "firebase/firestore";
 
 
 const ItemDetailContainer = () => {
-  const [producto, setProducto] = useState([]);
+  const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-
   const params = useParams();
   const productId = params.id; 
 
   useEffect(() => {
     const productsCollection = collection(db, "Productos"); 
     const refDoc = doc(productsCollection, productId) 
-    getDoc(refDoc) 
+    getDoc(refDoc)  
     .then((result)=>{ 
       const id = result.id; 
-      const product = { 
+      const item = { 
         id,             
         ...result.data()
       };
-      setProducto(product);
-      console.log(id)
-      console.log(result.data())
+      setProduct(item);
     })
     .catch (error => {
       console.log(error)
@@ -43,11 +40,9 @@ const ItemDetailContainer = () => {
       <Loader />
     ) : (
       error ? (
-        <p>Lo sentimos hubo un error</p>
+        <ErrorMsg>Lo sentimos hubo un error al cargar. Intente de nuevo</ErrorMsg>
       ) : (
-        <>
-        <ItemDetail item={producto} />
-        </>  
+        <ItemDetail item={product} />
       )
     )}
     </>
@@ -56,23 +51,4 @@ const ItemDetailContainer = () => {
 
 export default ItemDetailContainer
 
-
-/*
-const URL = productId? `https://fakestoreapi.com/products/${productId}`
-    : "https://fakestoreapi.com/products/1";
-    console.log(URL)
-    fetch(URL)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setProducto(data)
-      })
-      .catch ((err) => {
-        console.error(err);
-        setError(true)
-      })            
-      .finally(() => {
-        setLoading(false)
-      })          */
 

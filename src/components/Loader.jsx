@@ -2,14 +2,16 @@ import React from 'react'
 import styled from "styled-components";
 
 const SpinnerContainer = styled.div`
+    width: 90%;
+    margin: auto;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 50px 0px;
 
 `
 const Spinner = styled.div`
-    /* background-color: gray; */
     display: inline-block;
     position: relative;
     width: 80px;
@@ -27,8 +29,7 @@ const Spinner = styled.div`
         width: 6px;
         height: 18px;
         border-radius: 20%;
-        background: #fff;
-        background-color: red;
+        background-color: ${({theme}) => theme.colors.gray};
     }
     div:nth-child(1) {
         transform: rotate(0deg);
@@ -90,7 +91,7 @@ const Spinner = styled.div`
 
 const Loader = () => {
   return (
-      <SpinnerContainer className='container'>
+      <SpinnerContainer>
         <Spinner>
             <div></div>
             <div></div>

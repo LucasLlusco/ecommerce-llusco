@@ -1,47 +1,64 @@
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ItemCount from '../ItemCount'
-import {ItemDetailContainer, DetailImages, DetailInfo} from './styled'
+import {ItemDetailContainer, 
+  DetailImage, 
+  DetailInfo, 
+  ProductName, 
+  ProductPrice, 
+  ProductDescription, 
+  CheckoutBtn,
+  ProductStockTrue,
+  ProductStockFalse
+} from './styled'
 import { context } from '../../context/CartContext'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 
 
 const ItemDetail = ({item}) => {
-
-  const [addToCart, setAddToCart] = useState(true)
+  const [prodInCart, setProdInCart] = useState(false)
   const {addItem} = useContext(context)
   const onAdd = (quantityToAdd) => {
-    console.log(`acabas de agregar ${quantityToAdd} productos!`)
     addItem(item, quantityToAdd)
-    setAddToCart(false)
+    setProdInCart(true);
   }
-
   return (
     <ItemDetailContainer className='container'>
-      <DetailImages>
+      <DetailImage>
         <div>
-          <img src={item.image} alt={item.title} />
+          <img src={item.img} alt={item.name} />
         </div>
-
-      </DetailImages>
+      </DetailImage>
       <DetailInfo>
-        <h2>{item.name}</h2>
-        <p>{item.price}</p>
-        {/* <p>{item.description} </p> */}
-        <p>brand: {item.brand}</p>
-        {/* <p>rating: {item.rating.rate}</p> */}
-        {addToCart ? (
-          <ItemCount stock={5} initial={1} onAdd={onAdd}/>           
+        <ProductName>{item.name}</ProductName>
+        <ProductPrice>${item.price}</ProductPrice>
+        <p>Memoria interna: <b>{item.capacity}</b></p>
+        <p>Marca: <b>{item.brand}</b></p>
+        {item.stock > 0 ? (
+          <ProductStockTrue><CheckCircleIcon/>Stock disponible</ProductStockTrue>
         ) : (
-          <>
-          <button><Link to="/cart">Terminar compra</Link></button>
-          </>
-          
+          <ProductStockFalse><CancelIcon/>Sin stock</ProductStockFalse>
         )}
+        <p>Stock: <b>{item.stock}</b></p>
+        <p>Caracteristicas del producto:</p>
+        <ProductDescription>
+          {item.description.map((element) => { 
+            return ( 
+              <li key={element}>{element}</li>
+            )
+          })}
+        </ProductDescription>
+        {!prodInCart ? (
+          <ItemCount stock={item.stock} initial={1} onAdd={onAdd}/>           
+        ) : ( 
+          <Link to="/cart"><CheckoutBtn>Terminar compra</CheckoutBtn></Link>          
+        )}
+
       </DetailInfo>
     </ItemDetailContainer>
   )
 }
 
 export default ItemDetail
-

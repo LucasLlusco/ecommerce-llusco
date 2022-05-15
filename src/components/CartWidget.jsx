@@ -1,8 +1,7 @@
 import React, { useContext, useEffect } from 'react'
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import styled from "styled-components";
 import { context } from '../context/CartContext';
-
 
 const CartNotification = styled.div`
   display: flex;
@@ -10,7 +9,7 @@ const CartNotification = styled.div`
   font-size: 1rem;
   span {
     position: absolute;
-    background-color: #ff4754;
+    background-color:  ${({theme}) => theme.colors.lightRed};
     font-size: 15px;
     border-radius: 50%;
     top: -13px;
@@ -18,23 +17,22 @@ const CartNotification = styled.div`
     left: 10px;
     padding: 3px;
     text-align: center;
-    color: white;
+    color: ${({theme}) => theme.colors.white};
   }
 `
 
 const CartWidget = () => {
   const {cartItems, cartItemsQuantity, getCartItemsQuantity} = useContext(context) 
-  useEffect(() => {
+  useEffect(() => { 
     getCartItemsQuantity()   
-
   }, [cartItems]) 
 
-  console.log(`productos quantity en el carrito ${cartItemsQuantity}`)
-
-  return ( 
+  return (
     <CartNotification>
-        <ShoppingCartIcon/>
-        {cartItemsQuantity == 0? (<></>) : (<span>{cartItemsQuantity}</span>)}
+        <ShoppingCartOutlinedIcon/>
+        {cartItemsQuantity > 0 && (
+          <span>{cartItemsQuantity}</span>
+        )}
     </CartNotification>
   )
 }

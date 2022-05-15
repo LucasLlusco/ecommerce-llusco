@@ -1,41 +1,40 @@
 import React, { useState } from 'react'
-import { Cantidad } from './styled';
+import { Quantity, AddToCartBtn, DecreaseBtn, IncreaseBtn } from './styled';
 import AddIcon from '@mui/icons-material/Add';
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 
 const ItemCount = ({stock, initial, onAdd}) => { 
     const [quantityToAdd, setQuantityToAdd] = useState(initial);
-
-    const restar = () => { 
+    const decrease = () => { 
         if(quantityToAdd <= initial) {
-            console.log("te pasaste por debajo del minimo")
             return;
         } else {
             setQuantityToAdd(quantityToAdd - 1); 
         }
     }
 
-    const aumentar = () => { 
-        if(quantityToAdd >= stock) {
-            console.log("te pasaste del stock")
+    const increase = () => { 
+        if(stock < 0  || quantityToAdd >= stock) {
             return;
         } else {
             setQuantityToAdd(quantityToAdd + 1);     
         }
     }
 
-    const comprarItem = () => {
-        onAdd(quantityToAdd)
+    const addItem = () => {
+        if(stock >= 1) { 
+            onAdd(quantityToAdd)
+        } 
     }
     
     return (
         <>
-        <Cantidad>
-            <button onClick={restar}><HorizontalRuleIcon/></button>
+        <Quantity>
+            <DecreaseBtn onClick={decrease}><HorizontalRuleIcon/></DecreaseBtn>
             <input type="text" readOnly value={quantityToAdd} />
-            <button onClick={aumentar}><AddIcon/></button>
-        </Cantidad>
-        <button onClick={comprarItem}>Agregar al carrito</button>
+            <IncreaseBtn onClick={increase}><AddIcon/></IncreaseBtn>
+        </Quantity>
+        <AddToCartBtn onClick={addItem}>Agregar al carrito</AddToCartBtn>
         </>
     )
 }

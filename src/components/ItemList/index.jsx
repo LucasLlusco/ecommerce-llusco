@@ -4,20 +4,12 @@ import {ProductList} from './styled'
 
 const ItemList = ({items}) => {
   return (
-    <>
-    <ProductList className='container'>
+    <ProductList>
         {items.map((product) => (
             <Item key={product.id} item={product}/> 
         ))}                                         
     </ProductList>
-    </>
   )
 }
-
-
-
-
-
-
 
 export default ItemList
