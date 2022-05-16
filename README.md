@@ -1,7 +1,8 @@
 # Introduccion 
 Este proyecto es un ecommerce de react js para el curso
 de React JS de CoderHouse, se tratara de un ecommerce
-que vende celulares de distintas marcas, utilizando firebase.
+que vende celulares de distintas marcas, utilizando firebase para traer
+los productos, marcas y enviar los datos de la compra a una collection en fb.
 
 # Dependencias extra 
 styled-components: Decidi utilizar esta libreria porque me parece una 
