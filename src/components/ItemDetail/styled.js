@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const ItemDetailContainer = styled.div`
+    width: 90%;
+    margin: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     @media screen and (max-width: 768px) {

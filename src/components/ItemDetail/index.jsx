@@ -25,7 +25,7 @@ const ItemDetail = ({item}) => {
     setProdInCart(true);
   }
   return (
-    <ItemDetailContainer className='container'>
+    <ItemDetailContainer>
       <DetailImage>
         <div>
           <img src={item.img} alt={item.name} />
@@ -41,7 +41,6 @@ const ItemDetail = ({item}) => {
         ) : (
           <ProductStockFalse><CancelIcon/>Sin stock</ProductStockFalse>
         )}
-        <p>Stock: <b>{item.stock}</b></p>
         <p>Caracteristicas del producto:</p>
         <ProductDescription>
           {item.description.map((element) => { 
